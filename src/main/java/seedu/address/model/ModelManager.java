@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Module;
+import seedu.address.model.person.Showable;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -21,7 +22,7 @@ public class ModelManager implements Model {
 
     private final ModuleList moduleList;
     private final UserPrefs userPrefs;
-    private final FilteredList<Module> filteredModules;
+    private final FilteredList<Showable> filteredShowables;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,7 +35,7 @@ public class ModelManager implements Model {
 
         this.moduleList = new ModuleList(moduleList);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredModules = new FilteredList<>(this.moduleList.getModuleList());
+        filteredShowables = new FilteredList<>(this.moduleList.getModuleList());
     }
 
     public ModelManager() {
@@ -102,7 +103,7 @@ public class ModelManager implements Model {
     @Override
     public void addModule(Module module) {
         moduleList.addModule(module);
-        updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
+        updateFilteredList(PREDICATE_SHOW_ALL_MODULES);
     }
 
     @Override
@@ -119,14 +120,14 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Module> getFilteredModuleList() {
-        return filteredModules;
+    public ObservableList<Showable> getFilteredList() {
+        return filteredShowables;
     }
 
     @Override
-    public void updateFilteredModuleList(Predicate<Module> predicate) {
+    public void updateFilteredList(Predicate<Showable> predicate) {
         requireNonNull(predicate);
-        filteredModules.setPredicate(predicate);
+        filteredShowables.setPredicate(predicate);
     }
 
     //    @Override
@@ -156,7 +157,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return moduleList.equals(other.moduleList)
                 && userPrefs.equals(other.userPrefs)
-                && filteredModules.equals(other.filteredModules);
+                && filteredShowables.equals(other.filteredShowables);
     }
 
 }

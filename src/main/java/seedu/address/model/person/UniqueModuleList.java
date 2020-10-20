@@ -23,7 +23,7 @@ public class UniqueModuleList implements Iterable<Module> {
      */
     public boolean contains(Module toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSameModule);
+        return internalList.stream().anyMatch(toCheck::isSameShowable);
     }
 
     /**
@@ -51,7 +51,7 @@ public class UniqueModuleList implements Iterable<Module> {
             throw new ModuleNotFoundException();
         }
 
-        if (!target.isSameModule(editedModule) && contains(editedModule)) {
+        if (!target.isSameShowable(editedModule) && contains(editedModule)) {
             throw new DuplicateModuleException();
         }
 
@@ -117,7 +117,7 @@ public class UniqueModuleList implements Iterable<Module> {
     private boolean modulesAreUnique(List<Module> modules) {
         for (int i = 0; i < modules.size() - 1; i++) {
             for (int j = i + 1; j < modules.size(); j++) {
-                if (modules.get(i).isSameModule(modules.get(j))) {
+                if (modules.get(i).isSameShowable(modules.get(j))) {
                     return false;
                 }
             }

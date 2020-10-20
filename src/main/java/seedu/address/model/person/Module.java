@@ -3,17 +3,13 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import seedu.address.model.TaskList;
 import seedu.address.model.TutorialGroup;
 
 /**
  * Represents a Student's Module in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidModuleId(String)}
  */
-public class Module {
+public class Module implements Showable<Module> {
     public static final String MESSAGE_CONSTRAINTS = "Modules can take any values, and it should not be blank";
 
     /*
@@ -25,8 +21,8 @@ public class Module {
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
     private final String moduleId;
-    private List<TutorialGroup> tutorialGroups;
-    private TaskList taskList;
+    private UniqueTutorialGroupList tutorialGroups;
+    //private TaskList taskList;
     private int totalStudents = 0;
     private int totalGroups = 0;
 
@@ -39,8 +35,8 @@ public class Module {
         requireNonNull(moduleId);
         checkArgument(isValidModuleId(moduleId), MESSAGE_CONSTRAINTS);
         this.moduleId = moduleId;
-        this.tutorialGroups = new ArrayList<>();
-        this.taskList = new TaskList();
+        this.tutorialGroups = new UniqueTutorialGroupList();
+        //this.taskList = new TaskList();
     }
 
     /**
@@ -68,9 +64,9 @@ public class Module {
         tutorialGroups.add(tutorialGroup);
     }
 
-    public void removeTutorialGroup(TutorialGroup tutorialGroup) {
-        tutorialGroups.remove(tutorialGroup);
-    }
+    //    public void removeTutorialGroup(TutorialGroup tutorialGroup) {
+    //        tutorialGroups.remove(tutorialGroup);
+    //    }
 
     //    public void addTask(Task task) {
     //        tasks.add(task);
@@ -91,7 +87,7 @@ public class Module {
      * Returns true if both modules of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two modules.
      */
-    public boolean isSameModule(Module otherModule) {
+    public boolean isSameShowable(Module otherModule) {
         if (otherModule == this) {
             return true;
         }
