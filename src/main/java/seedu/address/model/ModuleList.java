@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Showable;
 import seedu.address.model.person.UniqueModuleList;
@@ -12,6 +13,7 @@ import seedu.address.model.person.UniqueModuleList;
 public class ModuleList implements ReadOnlyModuleList {
 
     private final UniqueModuleList modules = new UniqueModuleList();
+    //private Iterable<? extends Material> masterList = modules;
 
     public ModuleList() {}
 
@@ -83,5 +85,10 @@ public class ModuleList implements ReadOnlyModuleList {
     @Override
     public ObservableList<Module> getModuleList() {
         return modules.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<TutorialGroup> getTutorialGroupListOf(Module module) {
+        return modules.getTutorialGroupList(module).asUnmodifiableObservableList();
     }
 }

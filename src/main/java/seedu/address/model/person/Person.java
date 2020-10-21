@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Person {
+public class Person extends Material {
 
     // Identity fields
     private final Name name;
@@ -37,6 +37,8 @@ public class Person {
     public Name getName() {
         return name;
     }
+
+    public String getId() {return getName().fullName;}
 
     public Phone getPhone() {
         return phone;

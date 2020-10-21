@@ -20,6 +20,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.TutorialGroup;
 import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
+import seedu.address.model.person.Student;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -37,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ModuleListPanel moduleListPanel;
     private TutorialGroupListPanel tutorialGroupListPanel;
+    private StudentListPanel studentListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -116,11 +118,17 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         ObservableList<? extends Material> filteredList = logic.getFilteredList();
+        System.out.println(filteredList);
         if (filteredList.get(0) instanceof Module) {
+            System.out.println("I GOT HERE");
             moduleListPanel = new ModuleListPanel((ObservableList<Module>) filteredList);
             listPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
         } else if (filteredList.get(0) instanceof TutorialGroup) {
-
+            tutorialGroupListPanel = new TutorialGroupListPanel((ObservableList<TutorialGroup>) filteredList);
+            listPanelPlaceholder.getChildren().add(tutorialGroupListPanel.getRoot());
+        } else {
+            studentListPanel = new StudentListPanel((ObservableList<Student>) filteredList);
+            listPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
         }
 
         resultDisplay = new ResultDisplay();

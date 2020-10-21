@@ -8,14 +8,11 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
 
-/**
- * Deletes a person identified using it's displayed index from the address book.
- */
-public class DeleteCommand extends Command {
-
-    public static final String COMMAND_WORD = "delete";
+public class ViewTutorialGroupCommand extends Command {
+    public static final String COMMAND_WORD = "viewTG";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the person identified by the index number used in the displayed person list.\n"
@@ -26,7 +23,7 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public ViewTutorialGroupCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -39,16 +36,16 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Module moduleToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteModule(moduleToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, moduleToDelete));
+        Module moduleToGetTGFrom = lastShownList.get(targetIndex.getZeroBased());
+        model.changeToTutorialGroupList(moduleToGetTGFrom);
+        return new CommandResult("SUCCESS");
         //return new CommandResult("NOT IMPLEMENTED YET");
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
+                || (other instanceof ViewTutorialGroupCommand // instanceof handles nulls
+                && targetIndex.equals(((ViewTutorialGroupCommand) other).targetIndex)); // state check
     }
 }

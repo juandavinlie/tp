@@ -125,4 +125,10 @@ public class UniqueModuleList implements Iterable<Module> {
         return true;
     }
 
+    public UniqueTutorialGroupList getTutorialGroupList(Module module) {
+        int index = internalList.indexOf(module);
+        UniqueTutorialGroupList uniqueTG = internalList.get(index).getTutorialGroups();
+        return uniqueTG;
+    }
+
 }

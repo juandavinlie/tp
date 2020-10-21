@@ -36,6 +36,7 @@ public class Module extends Material implements Showable<Module> {
         checkArgument(isValidModuleId(moduleId), MESSAGE_CONSTRAINTS);
         this.moduleId = moduleId;
         this.tutorialGroups = new UniqueTutorialGroupList();
+        //tutorialGroups.add(new TutorialGroup("W12", this));
         //this.taskList = new TaskList();
     }
 
@@ -48,7 +49,7 @@ public class Module extends Material implements Showable<Module> {
         return test.matches(VALIDATION_REGEX);
     }
 
-    public String getModuleId() {
+    public String getId() {
         return this.moduleId;
     }
 
@@ -58,6 +59,10 @@ public class Module extends Material implements Showable<Module> {
 
     public int getTotalGroups() {
         return this.totalGroups;
+    }
+
+    public UniqueTutorialGroupList getTutorialGroups() {
+        return this.tutorialGroups;
     }
 
     public void addTutorialGroup(TutorialGroup tutorialGroup) {
@@ -80,7 +85,7 @@ public class Module extends Material implements Showable<Module> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Module // instanceof handles nulls
-                && getModuleId().equals(((Module) other).getModuleId())); // state check
+                && getId().equals(((Module) other).getId())); // state check
     }
 
     /**
@@ -93,11 +98,11 @@ public class Module extends Material implements Showable<Module> {
         }
 
         return otherModule != null
-                && otherModule.getModuleId().equals(getModuleId());
+                && otherModule.getId().equals(getId());
     }
 
     @Override
     public String toString() {
-        return getModuleId();
+        return getId();
     }
 }

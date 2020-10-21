@@ -23,7 +23,7 @@ public class ModelManager implements Model {
 
     private final ModuleList moduleList;
     private final UserPrefs userPrefs;
-    private final FilteredList<? extends Material> filteredShowables;
+    private FilteredList<? extends Material> filteredShowables;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +37,7 @@ public class ModelManager implements Model {
         this.moduleList = new ModuleList(moduleList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredShowables = new FilteredList<>(this.moduleList.getModuleList());
+        //filteredShowables = new FilteredList<>(this.moduleList.getModuleList());
     }
 
     public ModelManager() {
@@ -141,6 +142,11 @@ public class ModelManager implements Model {
     //        requireAllNonNull(tutorialGroup);
     //        return moduleList.hasTutorialGroup(tutorialGroup);
     //    }
+
+    @Override
+    public void changeToTutorialGroupList(Module module) {
+        filteredShowables = new FilteredList<>(moduleList.getTutorialGroupListOf(module));
+    }
 
     @Override
     public boolean equals(Object obj) {

@@ -24,7 +24,7 @@ public class JsonAdaptedModule {
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedModule(Module source) {
-        moduleId = source.getModuleId();
+        moduleId = source.getId();
     }
 
     /**

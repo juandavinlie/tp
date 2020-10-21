@@ -61,5 +61,12 @@ public class UniqueTutorialGroupList implements Iterable<TutorialGroup> {
     public int hashCode() {
         return internalList.hashCode();
     }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<TutorialGroup> asUnmodifiableObservableList() {
+        return internalUnmodifiableList;
+    }
 }
 

@@ -39,7 +39,7 @@ public class ModuleCard extends UiPart<Region> {
         super(FXML);
         this.module = module;
         id.setText(displayedIndex + ". ");
-        moduleId.setText(module.getModuleId());
+        moduleId.setText(module.getId());
         totalStudents.setText("Total Students: " + module.getTotalStudents());
         totalGroups.setText("Total Groups: " + module.getTotalGroups());
         //        person.getTags().stream()

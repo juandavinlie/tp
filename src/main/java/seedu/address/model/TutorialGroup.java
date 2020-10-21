@@ -39,7 +39,6 @@ public class TutorialGroup extends Material {
     }
 
     //GETTERS
-
     public String getId() {
         return this.id;
     }

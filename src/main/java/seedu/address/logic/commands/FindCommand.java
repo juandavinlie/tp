@@ -27,11 +27,11 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-//        requireNonNull(model);
-//        model.updateFilteredModuleList(predicate);
-//        return new CommandResult(
-//                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredModuleList().size()));
-        return new CommandResult("NOT IMPLEMENTED YET");
+        requireNonNull(model);
+        model.updateFilteredList(predicate);
+        return new CommandResult(
+                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredList().size()));
+        //return new CommandResult("NOT IMPLEMENTED YET");
     }
 
     @Override

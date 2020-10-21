@@ -87,6 +87,8 @@ public interface Model {
      */
     void updateFilteredList(Predicate<Material> predicate);
 
+    void changeToTutorialGroupList(Module module);
+
     //    /**
     //     * Adds the given tutorial group.
     //     * {@code tutorial group} must not already exist in the address book.

@@ -88,7 +88,7 @@ public class EditCommand extends Command {
     private static Module createEditedModule(Module moduleToEdit, EditModuleDescriptor editModuleDescriptor) {
         assert moduleToEdit != null;
 
-        String updatedModuleId = editModuleDescriptor.getModuleId().orElse(moduleToEdit.getModuleId());
+        String updatedModuleId = editModuleDescriptor.getModuleId().orElse(moduleToEdit.getId());
         //Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         //Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         //Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());

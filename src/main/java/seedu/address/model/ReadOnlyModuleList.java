@@ -5,4 +5,5 @@ import seedu.address.model.person.Module;
 
 public interface ReadOnlyModuleList {
     ObservableList<Module> getModuleList();
+    ObservableList<TutorialGroup> getTutorialGroupListOf(Module module);
 }
