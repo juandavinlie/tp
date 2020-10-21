@@ -8,7 +8,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyModuleList;
+import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
+import seedu.address.model.person.Showable;
 
 /**
  * API of the Logic component
@@ -31,7 +33,7 @@ public interface Logic {
     ReadOnlyModuleList getModuleList();
 
     /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Module> getFilteredModuleList();
+    ObservableList<? extends Material> getFilteredList();
 
     /**
      * Returns the user prefs' address book file path.

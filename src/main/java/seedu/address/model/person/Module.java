@@ -9,7 +9,7 @@ import seedu.address.model.TutorialGroup;
  * Represents a Student's Module in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidModuleId(String)}
  */
-public class Module implements Showable<Module> {
+public class Module extends Material implements Showable<Module> {
     public static final String MESSAGE_CONSTRAINTS = "Modules can take any values, and it should not be blank";
 
     /*

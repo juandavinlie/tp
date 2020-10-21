@@ -4,11 +4,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Student;
 import seedu.address.model.person.StudentId;
 
-public class TutorialGroup {
+public class TutorialGroup extends Material {
     private final String id;
     private Module module;
     private HashMap<StudentId, Student> studentList;

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Material;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Showable;
 
@@ -22,7 +23,7 @@ public class ModelManager implements Model {
 
     private final ModuleList moduleList;
     private final UserPrefs userPrefs;
-    private final FilteredList<Showable> filteredShowables;
+    private final FilteredList<? extends Material> filteredShowables;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -120,12 +121,12 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Showable> getFilteredList() {
+    public ObservableList<? extends Material> getFilteredList() {
         return filteredShowables;
     }
 
     @Override
-    public void updateFilteredList(Predicate<Showable> predicate) {
+    public void updateFilteredList(Predicate<Material> predicate) {
         requireNonNull(predicate);
         filteredShowables.setPredicate(predicate);
     }

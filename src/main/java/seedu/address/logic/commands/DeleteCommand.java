@@ -32,16 +32,17 @@ public class DeleteCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Module> lastShownList = model.getFilteredModuleList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        Module moduleToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteModule(moduleToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, moduleToDelete));
+        //        requireNonNull(model);
+        //        List<Module> lastShownList = model.getFilteredList();
+        //
+        //        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        //            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        //        }
+        //
+        //        Module moduleToDelete = lastShownList.get(targetIndex.getZeroBased());
+        //        model.deleteModule(moduleToDelete);
+        //        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, moduleToDelete));
+        return new CommandResult("NOT IMPLEMENTED YET");
     }
 
     @Override
